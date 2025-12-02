@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>اتصل</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;line-height:1.6;direction:rtl;padding:0 12px;color:#111}
+.navbar{display:flex;justify-content:space-between;align-items:center;margin:16px auto;max-width:1000px}
+.brand{text-decoration:none;color:#2b6cb0;font-weight:bold}
+.nav-links{list-style:none;display:flex;gap:12px;margin:0;padding:0}
+.nav-links a{text-decoration:none;color:#222;padding:6px 10px;border-radius:4px}
+.nav-links a[aria-current=page]{background:#eee}
+.container{max-width:1000px;margin:20px auto}
+.hero{padding:20px 0}
+button{padding:10px 14px;border:none;border-radius:4px;background:#2b6cb0;color:#fff;cursor:pointer}
+input,textarea{padding:8px;border:1px solid #ccc;border-radius:4px;width:100%}
+form{display:flex;flex-direction:column;gap:12px;width:100%;max-width:600px}
+footer{text-align:center;margin:30px auto;color:#666}
+</style>
+</head>
+<body>
+<header>
+<nav class="navbar">
+<a class="brand" href="index.html">موقعي</a>
+<ul class="nav-links">
+<li><a href="about.html">عنّي</a></li>
+<li><a href="projects.html">المشروعات</a></li>
+<li><a href="resume.html">السيرة</a></li>
+<li><a href="contact.html" aria-current="page">اتصل</a></li>
+</ul>
+</nav>
+</header>
+
+<main class="container">
+<h1>نموذج التواصل</h1>
+<form id="contactForm" novalidate>
+<label for="name">الاسم</label>
+<input id="name" required>
+
+<label for="email">البريد الإلكتروني</label>
+<input id="email" type="email" required>
+
+<label for="message">الرسالة</label>
+<textarea id="message" rows="5" required></textarea>
+
+<button type="submit">إرسال</button>
+</form>
+
+<p id="formResult"></p>
+</main>
+
+<footer>
+<p>© ٢٠٢٥</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+var b=document.getElementById('heroBtn');
+if(b){b.addEventListener('click',function(){alert('تم الضغط على الزر');});}
+var f=document.getElementById('contactForm');
+if(f){f.addEventListener('submit',function(e){
+e.preventDefault();
+var n=document.getElementById('name').value.trim();
+var em=document.getElementById('email').value.trim();
+var m=document.getElementById('message').value.trim();
+var r=document.getElementById('formResult');
+if(!n||!em||!m){r.textContent='يرجى تعبئة جميع الحقول';r.style.color='red';return;}
+var p=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if(!p.test(em)){r.textContent='بريد غير صحيح';r.style.color='red';return;}
+r.textContent='تم الإرسال بنجاح';r.style.color='green';
+f.reset();
+});}});
+</script>
+</body>
+</html>
